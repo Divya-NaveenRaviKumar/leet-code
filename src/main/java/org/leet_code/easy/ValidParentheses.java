@@ -1,4 +1,4 @@
-package org.example;
+package org.leet_code.easy;
 
 import java.util.Stack;
 
