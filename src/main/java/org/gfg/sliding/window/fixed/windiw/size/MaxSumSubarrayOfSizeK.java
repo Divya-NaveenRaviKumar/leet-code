@@ -6,7 +6,20 @@ public class MaxSumSubarrayOfSizeK {
         int k = 3;
         System.out.println(findMaxSumSubarray(k, arr));
     }
-    public static int findMaxSumSubarray(int k, int[] arr) {
+
+    static int findMaxSumSubarray(int windowSize, int[] array) {
+        int initialSum = 0;
+        for (int i = 0; i < windowSize; i++) {
+            initialSum += array[i];
+        }
+        int maxSum = 0;
+        for (int i = windowSize; i < array.length; i++) {
+            initialSum = initialSum - array[i - windowSize] + array[i];
+            maxSum = Math.max(maxSum, initialSum);
+        }
+        return maxSum;
+    }
+    /*public static int findMaxSumSubarray(int k, int[] arr) {
         int maxSum = 0;
         int windowSum = 0;
         int windowStart = 0;
@@ -19,5 +32,5 @@ public class MaxSumSubarrayOfSizeK {
             }
         }
         return maxSum;
-    }
+    }*/
 }
