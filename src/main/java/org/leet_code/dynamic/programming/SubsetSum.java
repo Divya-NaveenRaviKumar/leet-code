@@ -8,21 +8,21 @@ public class SubsetSum {
         System.out.println("Is subset sum possible: " + isSubsetSumDp(arr, sum, arr.length));
     }
 
-    private static boolean isSubsetSumDp(int[] arr, int sum, int n) {
-        boolean[][] dp = new boolean[arr.length + 1][sum + 1];
-        for (int i = 0; i <= arr.length; i++) {
-            dp[i][0] = true;
+    private static boolean isSubsetSumDp(int[] arr, int target, int n) {
+        boolean[][] dp = new boolean[arr.length + 1][target + 1];
+        for (int noOfElements = 0; noOfElements <= arr.length; noOfElements++) {
+            dp[noOfElements][0] = true;
         }
-        for (int i = 1; i <= arr.length; i++) {
-            for (int j = 1; j <= sum; j++) {
-                if (arr[i - 1] <= j) {
-                    dp[i][j] = dp[i - 1][j - arr[i - 1]] || dp[i - 1][j];
+        for (int noOfElements = 1; noOfElements <= arr.length; noOfElements++) {
+            for (int sum = 1; sum <= target; sum++) {
+                if (arr[noOfElements - 1] <= sum) {
+                    dp[noOfElements][sum] = dp[noOfElements - 1][sum - arr[noOfElements - 1]] || dp[noOfElements - 1][sum];
                 } else {
-                    dp[i][j] = dp[i - 1][j];
+                    dp[noOfElements][sum] = dp[noOfElements - 1][sum];
                 }
             }
         }
-        return dp[arr.length][sum];
+        return dp[arr.length][target];
     }
     private static boolean isSubsetSumRecursion(int[] arr, int sum, int n) {
         if(sum == 0)
