@@ -1,13 +1,13 @@
-package org.gfg.sliding.window.fixed.windiw.size;
+package org.gfg.sliding.window.size.fixed;
 
 public class MaxSumSubarrayOfSizeK {
     public static void main(String[] args) {
-        int[] arr = {2, 1, 5, 1, 3, 2};
+        int[] arr = {1,2,3,4,5,6,1};
         int k = 3;
         System.out.println(findMaxSumSubarray(k, arr));
     }
 
-    static int findMaxSumSubarray(int windowSize, int[] array) {
+    /* static int findMaxSumSubarray(int windowSize, int[] array) {
         int initialSum = 0;
         for (int i = 0; i < windowSize; i++) {
             initialSum += array[i];
@@ -18,8 +18,8 @@ public class MaxSumSubarrayOfSizeK {
             maxSum = Math.max(maxSum, initialSum);
         }
         return maxSum;
-    }
-    /*public static int findMaxSumSubarray(int k, int[] arr) {
+    } */
+    public static int findMaxSumSubarray(int k, int[] arr) {
         int maxSum = 0;
         int windowSum = 0;
         int windowStart = 0;
@@ -32,5 +32,5 @@ public class MaxSumSubarrayOfSizeK {
             }
         }
         return maxSum;
-    }*/
+    }
 }
